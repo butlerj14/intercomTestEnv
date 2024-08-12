@@ -12,6 +12,7 @@
   "dependencies": {
     "@intercom/messenger-js-sdk": "^0.0.13",
     "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "esbuild": "^0.23.0",
     "express": "^4.19.2",
