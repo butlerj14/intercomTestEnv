@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome <%= user %></title>
+</head>
+<body>
+    <h1>Welcome, <%= user %>!</h1>
+    <a href="/logout">Logout</a>
+
+    <!-- Intercom Messenger Script -->
+    <script>
+        window.intercomSettings = {
+            api_base: "https://api-iam.intercom.io",
+            app_id: "<%= process.env.INTERCOM_APP_ID %>", // Use environment variable for app_id
+            user_id: "<%= email %>", // Use the session email (user identifier)
+            user_hash: "<%= intercomHash %>" // Use the HMAC hash generated on the server
+        };
+    </script>
+
+    <script>
+        (function() {
+            var d = document;
+            var s = d.createElement('script');
+            s.type = 'text/javascript';
+            s.async = true;
+            // Use environment variable for widget URL
+            s.src = 'https://widget.intercom.io/widget/<%= process.env.INTERCOM_APP_ID %>';
+            var x = d.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(s, x);
+            s.onload = function() {
+                Intercom('boot', window.intercomSettings);
+            };
+        })();
+    </script>    
+</body>
+</html>
